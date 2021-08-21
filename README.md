@@ -1,6 +1,19 @@
 # algorithms
 Repository to hold algorithms descriptions and solutions in multiple programing languages, as practice.
 
+- [algorithms](#algorithms)
+  - [List of algorithms to implement:](#list-of-algorithms-to-implement)
+    - [Max Chars](#max-chars)
+    - [Palindrome with question marks](#palindrome-with-question-marks)
+    - [Fibonacci with 2 variables](#fibonacci-with-2-variables)
+    - [Matrix Spiral](#matrix-spiral)
+    - [Revert a number](#revert-a-number)
+    - [Array Chunk](#array-chunk)
+    - [Capitalize a string](#capitalize-a-string)
+    - [Steps](#steps)
+    - [Pyramid](#pyramid)
+    - [Weave](#weave)
+    - [Queue From Stacks](#queue-from-stacks)
 
 ## List of algorithms to implement:
 
