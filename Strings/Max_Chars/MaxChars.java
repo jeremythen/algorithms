@@ -1,4 +1,4 @@
-package Numbers.Matrix_Spiral;
+package Strings.Max_Chars;
 
 import java.util.Map;
 import java.util.HashMap;
