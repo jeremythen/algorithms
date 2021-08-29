@@ -1,16 +1,24 @@
 
 function canSum(target, numbers) {
-    if (target < 1) {
-        return target === 0;
-    }
-    for (let i = 0; i < numbers.length; i++) {
-        const newTarget = target - numbers[i];
-        const result = canSum(newTarget, numbers);
-        if (result) {
-            return result;
+    const cache = new Map();
+    const canSumClosure = (target) => {
+        if (cache.has(target)) {
+            return cache.get(target);
         }
+        if (target < 1) {
+            return target === 0;
+        }
+        for (let i = 0; i < numbers.length; i++) {
+            const newTarget = target - numbers[i];
+            const result = canSumClosure(newTarget, numbers);
+            cache.set(newTarget, result);
+            if (result) {
+                return result;
+            }
+        }
+        return false;
     }
-    return false;
+    return canSumClosure(target);
 }
 
 console.log(canSum(7, [2, 4]) === false); // true
