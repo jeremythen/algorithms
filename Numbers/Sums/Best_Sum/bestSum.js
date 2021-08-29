@@ -1,6 +1,5 @@
-function bestSum(originalTarget, numbers) {
+function bestSum(target, numbers) {
     const cache = new Map();
-    const combinations = [];
     const bestSumClosure = (target) => {
         if (target === 0) {
             return [];
@@ -11,6 +10,7 @@ function bestSum(originalTarget, numbers) {
         if (cache.has(target)) {
             return cache.get(target);
         }
+        let shortestCombination = null;
         for (let i = 0; i < numbers.length; i++) {
             const num = numbers[i];
             const newTarget = target - num;
@@ -18,19 +18,17 @@ function bestSum(originalTarget, numbers) {
             cache.set(newTarget, result);
             if (result) {
                 const midSolution = [...result, num];
-                const sum = midSolution.reduce((a, b) => a + b, 0);
-                if (sum !== originalTarget) {
-                    return midSolution;
+                if (!shortestCombination || midSolution.length < shortestCombination.length) {
+                    shortestCombination = midSolution;
                 }
-                combinations.push(midSolution);
             }
         }
-        return null;
+        return shortestCombination;
     };
-    bestSumClosure(originalTarget);
-    const leastCombination = combinations.reduce((a, b) => a.length < b.length ? a : b);
-    return leastCombination;
+    return bestSumClosure(target);
 }
 
 console.log(bestSum(7, [2, 4]));
 console.log(bestSum(7, [2, 4, 3, 7]));
+console.log(bestSum(8, [2, 3, 5]));
+console.log(bestSum(8, [1, 4, 5]));
