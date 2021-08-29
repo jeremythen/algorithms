@@ -1,11 +1,5 @@
 function rowSumOddNumbers(n) {
-    let firstRowValue = n * (n - 1) + 1;
-    let sum = firstRowValue;
-    for (let i = 1; i < n; i++) {
-        firstRowValue += 2;
-        sum += firstRowValue;
-    }
-    return sum;
+    return Math.pow(n, 3);
 }
 
 console.log(rowSumOddNumbers(3));
