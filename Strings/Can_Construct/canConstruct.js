@@ -1,10 +1,14 @@
 
 function canConstruct(target, wordBank) {
     const wordBankCache = new Set();
+    const cache = new Map();
     wordBank.forEach(word => wordBankCache.add(word));
     const canConstructClosure = (str) => {
         if (str === '') {
             return true;
+        }
+        if (cache.has(str)) {
+            return cache.get(str);
         }
         if (wordBankCache.has(str)) {
             return true;
@@ -14,6 +18,8 @@ function canConstruct(target, wordBank) {
             const subStr2 = str.substr(i, str.length - 1);
             const result1 = canConstructClosure(subStr1);
             const result2 = canConstructClosure(subStr2);
+            cache.set(subStr1, result1);
+            cache.set(subStr2, result2);
             if (result1 && result2) {
                 return true;
             }
