@@ -13,6 +13,7 @@ function gridTraveler(n, m) {
         }
         const result = gridTravelerClosure(n - 1, m) + gridTravelerClosure(n, m - 1);
         cache.set(key, result);
+        cache.set(`${m}_${n}`, result);
         return result;
     }
     return gridTravelerClosure(n, m);
