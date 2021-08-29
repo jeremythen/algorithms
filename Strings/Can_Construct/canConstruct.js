@@ -33,3 +33,23 @@ canConstruct('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd']); // true
 canConstruct('skateboard', ['bo', 'rd', 'ate', 't', 'ska', 'sk', 'boar']); // false
 canConstruct('enterapotentpot', ['a', 'p', 'ent', 'enter', 'ot', 'o', 't']); // true
 canConstruct('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef', ['e', 'ee', 'eee', 'eeee', 'eeeee', 'eeeeee', 'eeeeeee']); // false
+
+// External option
+function canConstruct2(target, wordBank, memo = {}) {
+    if (target in memo) {
+        return memo[target];
+    }
+    if (target === '') {
+        return true;
+    }
+    for (let word of wordBank) {
+        if (target.indexOf(word) === 0) {
+            const suffix = target.slice(word.length);
+            if (canConstruct2(suffix, wordBank, memo)) {
+                memo[target] = true;
+                return true;
+            }
+        }
+    }
+    return false;
+}
