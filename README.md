@@ -14,6 +14,10 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [Pyramid](#pyramid)
     - [Weave](#weave)
     - [Queue From Stacks](#queue-from-stacks)
+    - [Permutation](#permutation)
+    - [Row Sum Of Triangle Of Odd Numbers](#row-sum-of-triangle-of-odd-numbers)
+    - [Sums](#sums)
+    - [Construct](#construct)
 
 ## List of algorithms to implement:
 
@@ -113,3 +117,38 @@ The function should handle queues of different lengths, without inserting 'undef
 Implement a Queue data structure using two stacks.
 Create another abstraction that holds the tow stacks and provide queue methods to access this abstraction. Only use the `pop` and `push` methods of the stacks to simulate the queue.
 
+### Permutation
+
+Given a string S, return a list with all the permutation of that string.
+
+Given S = "abc", return [abc, acb, bac, bca, cab, cba]
+
+### Row Sum Of Triangle Of Odd Numbers
+
+Given a triangle of consecutive odd numbers.
+
+If given 1, return 1.
+If given 2, return the sum of the numbers in the second row, of 3 + 5 => 8.
+If given 3, return the sum of the numbers in the third row, of 7 + 9 + 11 => 27.
+
+Check the dedicated folder for this problem, for more details.
+
+### Sums
+
+Given a number `N`, and an array of numbers `numbers`, verify if you can recreate the target number `N` summing numbers from the `numbers` array.
+Return true if it's possible to create the target number `N` summing numbers from the `numbers` array. Return false otherwise.
+
+1) Can Sum
+2) How Sum
+3) Best Sum
+
+Check the dedicated folder for this problem, for more details.
+### Construct
+
+Check whether a string can be recreated from a bank or words (array of strings), how it can be created and how many times it can be created from that word bank. Use as many words from the word bank as you want.
+
+1) Can Construct
+2) How Construct
+3) All Construct
+
+Check the dedicated folder for this problem, for more details.
