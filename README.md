@@ -18,6 +18,8 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [Row Sum Of Triangle Of Odd Numbers](#row-sum-of-triangle-of-odd-numbers)
     - [Sums](#sums)
     - [Construct](#construct)
+    - [First Non Repeating Character](#first-non-repeating-character)
+    - [Palindromic Substring](#palindromic-substring)
 
 ## List of algorithms to implement:
 
@@ -152,3 +154,23 @@ Check whether a string can be recreated from a bank or words (array of strings),
 3) All Construct
 
 Check the dedicated folder for this problem, for more details.
+
+### First Non Repeating Character
+
+Find the first character that doesn't repeat in a string.
+
+Examples:
+
+Given "abcde", return "a" because "a" is the first character that doesn't repeat.
+Given "abcda", return "b" because "b" is the first character that doesn't repeat.
+Given "abcdeabcdf", return "e", because although "f" doesn't repeat in the string, "e" is the first that doesn't repeat.
+
+Assume a non empty string is given.
+
+### Palindromic Substring
+
+Find the largest sub palindrome in a string.
+If there is no palindrome or the palindrome is less than 3 chars, return "none".
+
+Given hellosannasmith, return sannas.
+Given abcdefgg, return none
