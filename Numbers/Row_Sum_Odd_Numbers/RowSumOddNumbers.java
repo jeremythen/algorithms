@@ -1,3 +1,5 @@
+package Numbers.Row_Sum_Odd_Numbers;
+
 public class RowSumOddNumbers {
 
     public static void main(String... args) {
@@ -7,7 +9,7 @@ public class RowSumOddNumbers {
     }
 
     public static int rowSumOddNumbers(int n) {
-        return (int)Math.pow(n, 3);
+        return (int) Math.pow(n, 3);
     }
-    
+
 }

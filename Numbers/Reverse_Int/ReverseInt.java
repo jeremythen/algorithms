@@ -1,3 +1,5 @@
+package Numbers.Reverse_Int;
+
 public class ReverseInt {
     public static void main(String... args) {
         System.out.println(reverseInt(123) == 321);
