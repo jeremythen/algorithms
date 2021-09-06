@@ -20,7 +20,7 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [Construct](#construct)
     - [First Non Repeating Character](#first-non-repeating-character)
     - [Palindromic Substring](#palindromic-substring)
-    - [Get Digit At](#get-digit-at)
+    - [Digit At](#digit-at)
     - [Sorting](#sorting)
 
 ## List of algorithms to implement:
@@ -177,11 +177,11 @@ If there is no palindrome or the palindrome is less than 3 chars, return "none".
 Given hellosannasmith, return sannas.
 Given abcdefgg, return none
 
-### Get Digit At
+### Digit At
 
-Implement function that receives an int number `num` and an int number `position`, where the `position` is represent the ith digit of `num` to return.
+Implement function that receives an int number `num` and an int number `position`, where the `position` is represent the ith digit of `num` to return, counting from the back of the number.
 
-Given `num` = 7895, `position` = 2, return 8, because 8 is the 2nd digit of `num`.
+Given `num` = 7895, `position` = 2, return 9, because 9 is the 2nd digit of `num` from the back.
 
 ### Sorting
 
