@@ -20,6 +20,8 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [Construct](#construct)
     - [First Non Repeating Character](#first-non-repeating-character)
     - [Palindromic Substring](#palindromic-substring)
+    - [Get Digit At](#get-digit-at)
+    - [Sorting](#sorting)
 
 ## List of algorithms to implement:
 
@@ -174,3 +176,22 @@ If there is no palindrome or the palindrome is less than 3 chars, return "none".
 
 Given hellosannasmith, return sannas.
 Given abcdefgg, return none
+
+### Get Digit At
+
+Implement function that receives an int number `num` and an int number `position`, where the `position` is represent the ith digit of `num` to return.
+
+Given `num` = 7895, `position` = 2, return 8, because 8 is the 2nd digit of `num`.
+
+### Sorting
+
+1) Bubble Sort
+2) Selection Sort
+3) Insertion Sort
+4) Merge Sort
+5) Quick Sort
+6) Heap Sort
+7) Radix Sort
+8) Bucket Sort
+9) Counting Sort
+10) Pigeonhole Sort
