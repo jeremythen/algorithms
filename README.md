@@ -21,6 +21,7 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [First Non Repeating Character](#first-non-repeating-character)
     - [Palindromic Substring](#palindromic-substring)
     - [Digit At](#digit-at)
+    - [Remove Duplicates](#remove-duplicates)
     - [Sorting](#sorting)
 
 ## List of algorithms to implement:
@@ -182,6 +183,18 @@ Given abcdefgg, return none
 Implement function that receives an int number `num` and an int number `position`, where the `position` is represent the ith digit of `num` to return, counting from the back of the number.
 
 Given `num` = 7895, `position` = 2, return 9, because 9 is the 2nd digit of `num` from the back.
+
+### Remove Duplicates
+
+Given a sorted array of integers in ascending order, modify the given array removing the duplicates. I.e, each element should appear only once. And print the resulting array and k, where k is the number of unique numbers in the array.
+
+Examples:
+
+Given numbers = [1,1,2]
+Return: numbers = [1,2,] and k = 2, because there are 2 unique numbers.
+
+Given numbers =  [0,0,1,1,1,2,2,3,3,4]
+Return: numbers =  [0,1,2,3,4,,,,,] and k = 5, because there are 5 unique numbers.
 
 ### Sorting
 
