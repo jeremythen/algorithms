@@ -22,6 +22,10 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [Palindromic Substring](#palindromic-substring)
     - [Digit At](#digit-at)
     - [Remove Duplicates](#remove-duplicates)
+    - [Remove target occurrences](#remove-target-occurrences)
+    - [Implement indexOf](#implement-indexof)
+    - [Length of last word](#length-of-last-word)
+    - [Sum in Array](#sum-in-array)
     - [Sorting](#sorting)
 
 ## List of algorithms to implement:
@@ -196,6 +200,39 @@ Return: numbers = [1,2,] and k = 2, because there are 2 unique numbers.
 Given numbers =  [0,0,1,1,1,2,2,3,3,4]
 Return: numbers =  [0,1,2,3,4,,,,,] and k = 5, because there are 5 unique numbers.
 
+### Remove target occurrences
+
+Given an array only containing integers and a value called target which is also an integer, Modify the input array to delete all the elements that are equal to target, shifting all the other elements to the left and print the count of the remaining elements on that array that were not removed.
+
+Given: numbers = [3,2,2,3], val = 3
+Print: [2,2,,], 2, because the target is 3, and all it's occurrences were removed from the original array, shifting the other elements to the left. And 2 because that was the amount of elements remaining.
+
+Given: numbers = [0,1,2,2,3,0,4,2], val = 2
+Print: numbers = [0,1,4,0,3,,,_], 5.
+
+### Implement indexOf
+
+Given a string and a substring, return the index first occurrence of the substring in the string. Return -1 if no occurrence was found.
+
+Given: str = "Hello world", substr = "ll"
+Return: 2, because the first occurrence of "ll" is in the index 2 of the string.
+
+### Length of last word
+
+Given a string containing words separated by one or more spaces, return the length of the last word.
+
+Given: "   hello      world  "
+Return: 5, because the last word is "world" and it's length is 5.
+
+### Sum in Array
+
+Given a number represented in an array where each index in the array holds a digit for that number, increment the last digit in the array by 1. The whole array values should change if needed.
+
+Given: digits = [1,2,3]
+Return: digits = [1,2,4]
+
+Given: digits = [9,9,9]
+Return: digits = [1,0,0,0]
 ### Sorting
 
 1) Bubble Sort
