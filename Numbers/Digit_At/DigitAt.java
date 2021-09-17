@@ -10,7 +10,7 @@ public class DigitAt {
     }
 
     public static int getDigitAt(int num, int position) {
-        double result = num % Math.pow(10, position) / Math.pow(10, position - 1);
+        double result = num / Math.pow(10, position - 1) % 10;
         return (int) result;
     }
 
