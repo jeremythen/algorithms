@@ -1,9 +1,6 @@
 
-import math
-
-
 def digit_at(number, index):
-    return math.floor(number / 10 ** (index - 1) % 10)
+    return number // 10 ** (index - 1) % 10
 
 
 print(digit_at(1234567, 1) == 7)
