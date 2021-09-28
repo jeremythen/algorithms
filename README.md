@@ -26,6 +26,7 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [Implement indexOf](#implement-indexof)
     - [Length of last word](#length-of-last-word)
     - [Sum in Array](#sum-in-array)
+    - [Max 1 Bits Sequence](#max-1-bits-sequence)
     - [Sorting](#sorting)
 
 ## List of algorithms to implement:
@@ -233,6 +234,19 @@ Return: digits = [1,2,4]
 
 Given: digits = [9,9,9]
 Return: digits = [1,0,0,0]
+
+### Max 1 Bits Sequence
+
+Given a binary number, write a function findMax1BitsSequence(n) that receives a number (or binary) and returns the longest subsequence of 1s.
+
+
+```javascript
+console.log(findMax1BitsSequence(0b1111111110010111011) === 9); // 9 because the longest subsequence of 1s is 9 1s one next to the other.
+console.log(findMax1BitsSequence(0b10011110010111011) === 4);
+console.log(findMax1BitsSequence(0b1111001) === 4);
+console.log(findMax1BitsSequence(0b101) === 1);
+```
+
 ### Sorting
 
 1) Bubble Sort
