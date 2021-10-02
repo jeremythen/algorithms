@@ -235,6 +235,9 @@ Return: digits = [1,2,4]
 Given: digits = [9,9,9]
 Return: digits = [1,0,0,0]
 
+Given: digits = [1,2,3,4,5,6]
+Return: digits = [1,2,3,4,5,7]
+
 ### Max 1 Bits Sequence
 
 Given a binary number, write a function findMax1BitsSequence(n) that receives a number (or binary) and returns the longest subsequence of 1s.
