@@ -1,10 +1,11 @@
 function moveZeros(numbers) {
     for(let j = 0, i = 0; j < numbers.length; j++) {
-        if(numbers[i] === 0 && numbers[j] !== 0) {
-            numbers[i++] = numbers[j];
+    	const iValue = numbers[i];
+    	const jValue = numbers[j];
+        if(iValue === 0 && jValue) {
+            numbers[i++] = jValue;
             numbers[j] = 0;
-        }
-        if(numbers[i] !== 0) {
+        } else if(iValue) {
             i++;
         }
     }
