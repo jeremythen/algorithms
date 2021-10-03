@@ -27,6 +27,7 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [Length of last word](#length-of-last-word)
     - [Sum in Array](#sum-in-array)
     - [Max 1 Bits Sequence](#max-1-bits-sequence)
+    - [Move Zeros](#move-zeros)
     - [Sorting](#sorting)
 
 ## List of algorithms to implement:
@@ -249,6 +250,24 @@ console.log(findMax1BitsSequence(0b10011110010111011) === 4);
 console.log(findMax1BitsSequence(0b1111001) === 4);
 console.log(findMax1BitsSequence(0b101) === 1);
 ```
+
+### Move Zeros
+
+Given an integer array numbers, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+Note that you must do this in-place without making a copy of the array.
+
+ 
+Example 1:
+
+Input: numbers = [0,1,0,3,12]
+Output: [1,3,12,0,0]
+Example 2:
+
+Input: numbers = [0]
+Output: [0]
+
+Input: numbers = [1,0,4,0,0,10,20,100]
+Output: [1,4,10,20,100,0,0,0]
 
 ### Sorting
 
