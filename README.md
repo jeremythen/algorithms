@@ -29,6 +29,7 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [Max 1 Bits Sequence](#max-1-bits-sequence)
     - [Move Zeros](#move-zeros)
     - [What Letter Was Added](#what-letter-was-added)
+    - [Concatenate integers](#concatenate-integers)
     - [Sorting](#sorting)
 
 ## List of algorithms to implement:
@@ -294,6 +295,18 @@ Example 4:
 
 Input: s = "ae", t = "aea"
 Output: "a"
+
+### Concatenate integers
+
+Given 2 integers, write a function that concatenates them into one.
+
+Given: n1 = 234, n2 = 567
+Return: 234567
+
+Given: n1 = 6234, n2 = 723
+Return: 6234723
+
+We are expecting an efficient solution using arithmetics.
 
 ### Sorting
 
