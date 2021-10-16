@@ -30,6 +30,7 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [Move Zeros](#move-zeros)
     - [What Letter Was Added](#what-letter-was-added)
     - [Concatenate integers](#concatenate-integers)
+    - [Sum Zero](#sum-zero)
     - [Sorting](#sorting)
 
 ## List of algorithms to implement:
@@ -307,6 +308,14 @@ Given: n1 = 6234, n2 = 723
 Return: 6234723
 
 We are expecting an efficient solution using arithmetics.
+
+### Sum Zero
+
+Write a function called sumZero which accepts a sorted array of integers. The function should find the first pair where the sum is 0. Return an array that includes both values that sum to zero or undefined if a pair doesn't exist.
+
+sumZero([-3-2-1,0,1,2,3]) // [-3,3]
+sumZero([-2,0,1,3]) // undefined
+sumZero([1,2,3]) // undefined
 
 ### Sorting
 
