@@ -31,6 +31,7 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [What Letter Was Added](#what-letter-was-added)
     - [Concatenate integers](#concatenate-integers)
     - [Sum Zero](#sum-zero)
+    - [Longest Unique Chars Sequence](#longest-unique-chars-sequence)
     - [Sorting](#sorting)
 
 ## List of algorithms to implement:
@@ -316,6 +317,21 @@ Write a function called sumZero which accepts a sorted array of integers. The fu
 sumZero([-3-2-1,0,1,2,3]) // [-3,3]
 sumZero([-2,0,1,3]) // undefined
 sumZero([1,2,3]) // undefined
+
+### Longest Unique Chars Sequence
+
+Given a string, return the first longest unique chars sequence.
+
+Examples:
+
+Given: "subsequence"
+return: "ubseq"
+
+Given: "hellothere"
+return: "lother"
+
+Given: "abbacdcbd"
+return: "bacd"
 
 ### Sorting
 
