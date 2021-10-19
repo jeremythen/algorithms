@@ -32,6 +32,7 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [Concatenate integers](#concatenate-integers)
     - [Sum Zero](#sum-zero)
     - [Longest Unique Chars Sequence](#longest-unique-chars-sequence)
+    - [Same Squared](#same-squared)
     - [Sorting](#sorting)
 
 ## List of algorithms to implement:
@@ -332,6 +333,15 @@ return: "lother"
 
 Given: "abbacdcbd"
 return: "bacd"
+
+### Same Squared
+
+Write a function called same, which accepts two arrays. The function should return true if every valu in the array has it's corresponding value squared in the second array. The frequency of values must be the same
+
+sameSquared([1,2,3], [4,1,9]) === true; // true
+sameSquared([1,2,3], [1,9]) === false) // true
+sameSquared([1,2,1], [4,4,1]) === false; // true
+sameSquared([1,2,5,3,4,5,6,6], [1,4,9,16,25,36,36,25]) === true; // true
 
 ### Sorting
 
