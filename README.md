@@ -33,6 +33,7 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [Sum Zero](#sum-zero)
     - [Longest Unique Chars Sequence](#longest-unique-chars-sequence)
     - [Same Squared](#same-squared)
+    - [Pascal Triangle](#pascal-triangle)
     - [Sorting](#sorting)
 
 ## List of algorithms to implement:
@@ -342,6 +343,16 @@ sameSquared([1,2,3], [4,1,9]) === true; // true
 sameSquared([1,2,3], [1,9]) === false) // true
 sameSquared([1,2,1], [4,4,1]) === false; // true
 sameSquared([1,2,5,3,4,5,6,6], [1,4,9,16,25,36,36,25]) === true; // true
+
+### Pascal Triangle
+
+Given an integer numRows, return the first numRows of Pascal's triangle.
+
+Input: numRows = 5
+Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+
+Input: numRows = 1
+Output: [[1]]
 
 ### Sorting
 
