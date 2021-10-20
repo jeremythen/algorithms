@@ -22,9 +22,13 @@ function longestUniqueCharsSubsequence(s) {
             j++;
         }
     }
-    return s.substring(i2, j2 + 1);
+    const str1Len = s.substring(i2, j2 + 1).length;
+    const str2Len = s.substring(i3, j3 + 1).length;
+    return str1Len > str2Len ? str1Len : str2Len;
 }
 
 console.log(longestUniqueCharsSubsequence("subsequence") === "ubseq");
 console.log(longestUniqueCharsSubsequence("hellothere") === "lother");
 console.log(longestUniqueCharsSubsequence("abbacdcbd") === "bacd");
+console.log(longestUniqueCharsSubsequence("abcabcbb") === "abc");
+console.log(longestUniqueCharsSubsequence("au") === "au");
