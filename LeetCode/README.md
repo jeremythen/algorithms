@@ -20,3 +20,20 @@ Output: [1,2]
 Input: nums = [3,3], target = 6
 Output: [0,1]
 
+## 2 Longest Substring Without Repeating Characters
+
+Given a string s, find the length of the longest substring without repeating characters.
+
+longestUniqueCharsSubsequence("subsequence") === "ubseq";
+longestUniqueCharsSubsequence("hellothere") === "lother";
+longestUniqueCharsSubsequence("abbacdcbd") === "bacd";
+longestUniqueCharsSubsequence("abcabcbb") === "abc";
+longestUniqueCharsSubsequence("au") === "au";
+
+## 3 Longest Palindromic Substring
+
+Given a string s, return the longest palindromic substring in s.
+
+palindromicSubstring("hellosannasmith") === "sannas";
+palindromicSubstring("abcdefgg") === "gg";
+palindromicSubstring("cbbd") === "cbbd";

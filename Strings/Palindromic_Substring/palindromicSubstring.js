@@ -32,4 +32,4 @@ function palindromicSubstring(str) {
 }
 
 console.log(palindromicSubstring("hellosannasmith") === "sannas");
-console.log(palindromicSubstring("abcdefgg") === "none");
+console.log(palindromicSubstring("abcdefgg") === "gg");
