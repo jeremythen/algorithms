@@ -185,7 +185,6 @@ Assume a non empty string is given.
 ### 16 Palindromic Substring
 
 Find the largest sub palindrome in a string.
-If there is no palindrome or the palindrome is less than 3 chars, return "none".
 
 Given hellosannasmith, return sannas.
 Given abcdefgg, return none
