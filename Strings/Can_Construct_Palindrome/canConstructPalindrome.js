@@ -12,8 +12,9 @@ function canConstructPalindrome(s) {
     const evenValues = values.filter(value => isEven(value));
     const oddValues = values.filter(value => !isEven(value));
     const evenValuesSum = evenValues.reduce((v1, v2) => v1 + v2, 0);
-    const maxOddValue = oddValues.length > 0 ? Math.max(...oddValues) : 0;
-    return evenValuesSum + maxOddValue;
+    const oddValuesSum = oddValues.map(value => value - 1).reduce((v1, v2) => v1 + v2, 0);
+    const finalOddValuesSum = oddValues.length > 0 ? oddValuesSum + 1 : 0;
+    return evenValuesSum + finalOddValuesSum;
 }
 
 canConstructPalindrome("bb"); // 2
