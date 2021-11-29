@@ -1,7 +1,7 @@
 function palindromeWithQuestionMarks(S) {
     const chars = S.split('');
     for (let i = 0, j = chars.length - 1; i <= j; i++, j--) {
-        const leftChar = chars[i]
+        const leftChar = chars[i];
         const rightChar = chars[j];
         if (leftChar !== '?' && rightChar !== '?') {
             if (leftChar !== rightChar) {

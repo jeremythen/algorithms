@@ -34,6 +34,7 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [28 Longest Unique Chars Sequence](#28-longest-unique-chars-sequence)
     - [29 Same Squared](#29-same-squared)
     - [30 Pascal Triangle](#30-pascal-triangle)
+    - [31 Can Construct Palindrome](#31-can-construct-palindrome)
     - [nth Sorting](#nth-sorting)
 
 ## List of algorithms to implement:
@@ -352,6 +353,27 @@ Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
 
 Input: numRows = 1
 Output: [[1]]
+
+### 31 Can Construct Palindrome
+
+Given a string s which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters.
+
+Letters are case sensitive, for example, "Aa" is not considered a palindrome here.
+
+Example 1:
+
+Input: s = "abccccdd"
+Output: 7
+Explanation:
+One longest palindrome that can be built is "dccaccd", whose length is 7.
+Example 2:
+
+Input: s = "a"
+Output: 1
+Example 3:
+
+Input: s = "bb"
+Output: 2
 
 ### nth Sorting
 
