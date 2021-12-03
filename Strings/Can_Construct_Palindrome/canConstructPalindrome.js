@@ -20,3 +20,5 @@ function canConstructPalindrome(s) {
 canConstructPalindrome("bb"); // 2
 canConstructPalindrome("a"); // 1
 canConstructPalindrome("abccccdd"); // 7
+canConstructPalindrome("abccccddeeefff"); // 11
+canConstructPalindrome("abccccddeeefffff"); // 13
