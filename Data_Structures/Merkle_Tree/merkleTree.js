@@ -1,8 +1,7 @@
-/**
- * Simple implementation of a Merkle Tree/Root/Proof.
- */
+const crypto = require('crypto');
 
-import crypto from 'crypto';
+const LEFT = 'left';
+const RIGHT = 'right';
 
 const txHashes = [
     '95cd603fe577fa9548ec0c9b50b067566fe07c8af6acba45f6196f3a15d511f6',
@@ -28,102 +27,156 @@ const txHashes = [
     '27ef2eaa77544d2dd325ce93299fcddef0fae77ae72f510361fa6e5d831610b2'
 ];
 
-const sha256d = hex => {
-    const tx1Hash = crypto
-    .createHash('sha256')
-    .update(hex)
-    .digest()
-    .toString('hex');
-    return tx1Hash;
+const sha256 = data => {
+    return crypto
+        .createHash('sha256')
+        .update(data)
+        .digest()
+        .toString('hex');
 };
 
-const tx = '41b637cfd9eb3e2f60f734f9ca44e5c1559c6f481d49d6ed6891f3e9a086ac78';
+const getTxDirectionInTree = (transactionHash, tree) => {
+    const txIndex = tree[0].findIndex(tx0 => tx0 === transactionHash);
+    return txIndex % 2 === 0 ? LEFT : RIGHT;
+};
 
-function ensureEven(txHashes) {
+/**
+ * If the txHashes length is not even, then it copies the last txHash and adds it to the
+ * end of the array, so it can be hashed with itself.
+ * @param {Array<string>} txHashes
+ */
+ function ensureEven(txHashes) {
     if(txHashes.length % 2 !== 0) {
         txHashes.push(txHashes[txHashes.length - 1]);
     }
 }
 
+/**
+ * Generates the merkle root of the txHashes passed through the parameter.
+ * Recursively concatenates pair of tx hashes and calculates each sha256 hash of the
+ * concatenated hashes until only one hash is left, which is the merkle root, and returns it.
+ * @param {Array<string>} txHashes
+ * @returns merkleRoot
+ */
 function generateMerkleRoot(txHashes) {
+    if(!txHashes || txHashes.length == 0) {
+        return '';
+    }
     ensureEven(txHashes);
     const combinedHashes = [];
     for(let i = 0; i < txHashes.length; i += 2) {
-        const tx1 = txHashes[i];
-        const tx2 = txHashes[i + 1];
-        const txsConcatenated = tx1 + tx2;
-        const txsHashed = sha256d(txsConcatenated);
-        combinedHashes.push(txsHashed);
+        const txPairConcatenated = txHashes[i] + txHashes[i + 1];
+        const txsHash = sha256(txPairConcatenated);
+        combinedHashes.push(txsHash);
     }
     if(combinedHashes.length === 1) {
         return combinedHashes.join('');
     }
-    ensureEven(combinedHashes);
     return generateMerkleRoot(combinedHashes);
 }
 
-
+/**
+ * Calculates the merkle root using the merkle proof by concatenating each pair of
+ * tx hashes with the correct tree branch direction (left, right) and calculating
+ * the sha256 hash of the concatenated pair, until the merkle root hash is generated 
+ * and returned.
+ * The first transaction needs to be in the first position of this array, with its
+ * corresponding tree branch direction.
+ * @param {Array<node>} merkleProof 
+ * @returns {string} merkleRoot
+ */
 function getMerkleRootFromMerkleProof(merkleProof) {
-    return processMerkleProof(merkleProof);
-}
-
-function processMerkleProof(merkleProof) {
+    if(!merkleProof || merkleProof.length === 0) {
+        return '';
+    }
     const merkleRootFromProof = merkleProof.reduce((txProof1, txProof2) => {
-        if(txProof2.direction === 'right') {
-            const hashFromLeft = sha256d(txProof1.tx + txProof2.tx);
-            return {tx: hashFromLeft};
+        if(txProof2.direction === RIGHT) {
+            const hashFromLeftSubtree = sha256(txProof1.tx + txProof2.tx);
+            return { tx: hashFromLeftSubtree };
         }
-        const hashFromRight = sha256d(txProof2.tx + txProof1.tx);
-        return {tx: hashFromRight};
+        const hashFromRightSubtree = sha256(txProof2.tx + txProof1.tx);
+        return { tx: hashFromRightSubtree };
     });
     return merkleRootFromProof.tx;
 }
 
+/**
+ * Creates a merkle tree, recursively, from the provided transaction hashes, represented
+ * with an array of arrays of transactions/nodes. Where each array in the array
+ * is a tree level with all the transactions/nodes in that level.
+ * In the array at position tree[0] (the first array of transactions) there are
+ * all the transaction hashes.
+ * In the array at position tree[1] there are the combined pair or sha256 hashes of the
+ * transactions in the position tree[0], and so on.
+ * In the last position (tree[tree.length - 1]) there is only one hash, which is the
+ * root of the tree, or merkle root.
+ * @param {Array<string>} txHashes 
+ * @returns {Array<Array<string>} merkleTree
+ */
 function generateMerkleTree(txHashes) {
-    const tree = [];
-    const generate = txHashes => {
+    if(!txHashes || txHashes.length === 0) {
+        return [];
+    }
+    const tree = [txHashes];
+    const generate = (txHashes, tree) => {
+        if(txHashes.length === 1) {
+            return txHashes;
+        }
         ensureEven(txHashes);
-        tree.push(txHashes);
         const combinedHashes = [];
         for(let i = 0; i < txHashes.length; i += 2) {
-            const tx1 = txHashes[i];
-            const tx2 = txHashes[i + 1];
-            const txsConcatenated = tx1 + tx2;
-            const txsHashed = sha256d(txsConcatenated);
+            const txsConcatenated = txHashes[i] + txHashes[i + 1];
+            const txsHashed = sha256(txsConcatenated);
             combinedHashes.push(txsHashed);
         }
-        if(combinedHashes.length === 1) {
-            tree.push(combinedHashes);
-            return combinedHashes;
-        }
+        tree.push(combinedHashes);
         return generate(combinedHashes, tree);
     }
-    generate(txHashes);
+    generate(txHashes, tree);
     return tree;
 }
 
+/**
+ * Generates the merkle proof by first creating the merkle tree,
+ * and then finding the tx index in the tree and calculating if it's a 
+ * left or right child (since the hashes are calculated in pairs, 
+ * tx at index 0 would be a left child, transaction at index 1 would be a right child.
+ * Even indices are left children, odd indices are right children),
+ * then it finds the sibling node (the one needed to concatenate and hash it with the child node)
+ * and adds it to the proof, with its direction (left or right)
+ * then it calculates the position of the next node in the next level, by
+ * dividing the child index by 2, so this new index can be used in the next iteration of the
+ * loop, along with the level.
+ * If we check the result of this representation of the merkle tree, we notice that
+ * The first level has all the transactions, an even number of transactions.
+ * All the levels have an even number of transactions, except the last one (since is the 
+ * merkle root)
+ * The next level have half or less transactions than the previous level, which allows us
+ * to find the tx associated with the index of a previous tx in the next level in constant time.
+ * Then we simply return this merkle proof.
+ * @param {string} tx 
+ * @param {Array<string>} txHashes 
+ * @returns {Array<node>} merkleProof
+ */
 function generateMerkleProof(tx, txHashes) {
+    if(!tx || !txHashes || txHashes.length === 0) {
+        return null;
+    }
     const tree = generateMerkleTree(txHashes);
     const merkleProof = [{
         tx,
-        direction: 'left'
+        direction: getTxDirectionInTree(tx, tree)
     }];
-    let txIndex = - 1;
-    for(let i = 0; i < tree.length - 1; i++) {
-        if(i === 0) {
-            txIndex = tree[0].findIndex(tx0 => tx0 === tx);
-        }
-        if(txIndex % 2 === 1) {
-            merkleProof.push({
-                tx: tree[i][txIndex - 1],
-                direction: 'left'
-            });
-        } else {
-            merkleProof.push({
-                tx: tree[i][txIndex + 1],
-                direction: 'right'
-            });
-        }
+    let txIndex = tree[0].findIndex(tx0 => tx0 === tx);
+    for(let level = 0; level < tree.length - 1; level++) {
+        const isLeftChild = txIndex % 2 === 0;
+        const siblingDirection = isLeftChild ? RIGHT : LEFT;
+        const siblingIndex = isLeftChild ? txIndex + 1 : txIndex - 1;
+        const siblingNode = {
+            tx: tree[level][siblingIndex],
+            direction: siblingDirection
+        };
+        merkleProof.push(siblingNode);
         txIndex = Math.floor(txIndex / 2);
     }
     return merkleProof;
@@ -131,7 +184,7 @@ function generateMerkleProof(tx, txHashes) {
 
 const merkleRoot = generateMerkleRoot(txHashes);
 
-const generatedMerkleProof = generateMerkleProof(tx, txHashes);
+const generatedMerkleProof = generateMerkleProof(txHashes[4], txHashes);
 
 const merkleTree = generateMerkleTree(txHashes);
 
