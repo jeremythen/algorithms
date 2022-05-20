@@ -35,6 +35,7 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [29 Same Squared](#29-same-squared)
     - [30 Pascal Triangle](#30-pascal-triangle)
     - [31 Can Construct Palindrome](#31-can-construct-palindrome)
+    - [32 Implement a basic solution for the Merkle Tree/Root/Proof](#32-implement-a-basic-solution-for-the-merkle-treerootproof)
     - [nth Sorting](#nth-sorting)
 
 ## List of algorithms to implement:
@@ -374,6 +375,8 @@ Example 3:
 
 Input: s = "bb"
 Output: 2
+
+### 32 Implement a basic solution for the Merkle Tree/Root/Proof
 
 ### nth Sorting
 
