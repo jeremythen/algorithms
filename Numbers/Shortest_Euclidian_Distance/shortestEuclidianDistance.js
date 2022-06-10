@@ -1,16 +1,6 @@
 
 function getPointsDistance(point1, point2) {
-    const v1 = point1[0];
-    const v2 = point2[0];
-    const v3 = point1[1];
-    const v4 = point2[1];
-    const v1Minusv2 = v1 - v2;
-    const v3Minusv4 = v3 - v4;
-    const v1MinusV2Squared = Math.pow(v1Minusv2, 2);
-    const v3Minusv4Squared = Math.pow(v3Minusv4, 2);
-    const v1MinusV2SquaredPlusV3Minusv4Squared = v1MinusV2Squared + v3Minusv4Squared;
-    const sqrt = Math.sqrt(v1MinusV2SquaredPlusV3Minusv4Squared);
-    return sqrt;
+    return Math.sqrt(Math.pow(point1[0] - point2[0], 2) + Math.pow(point1[1] - point2[1], 2));
 }
 
 function shortestPointLineLength(points) {
