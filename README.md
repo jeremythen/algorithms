@@ -36,6 +36,7 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [30 Pascal Triangle](#30-pascal-triangle)
     - [31 Can Construct Palindrome](#31-can-construct-palindrome)
     - [32 Implement a basic solution for the Merkle Tree/Root/Proof](#32-implement-a-basic-solution-for-the-merkle-treerootproof)
+    - [Shortest Euclidian Distance](#shortest-euclidian-distance)
     - [nth Sorting](#nth-sorting)
 
 ## List of algorithms to implement:
@@ -377,6 +378,22 @@ Input: s = "bb"
 Output: 2
 
 ### 32 Implement a basic solution for the Merkle Tree/Root/Proof
+
+### Shortest Euclidian Distance
+
+You have an array `points` on a Cartesian plane. Find and return the minimum possible Euclidian distance between two points with different indices in `points`.
+
+Example:
+
+For points = [[0, 11], [-7, 1], [-5, -3]]
+
+output should be about, rounded to 2 decimals:
+
+```js
+shortestPointLineLength(points); // 4.47
+```
+
+Every inner array `points[i]` contains exactly 2 integers: the `x` and `y` coordinates of the `ith` point.
 
 ### nth Sorting
 
