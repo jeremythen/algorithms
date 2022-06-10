@@ -5,10 +5,12 @@ function getPointsDistance(point1, point2) {
 
 function shortestPointLineLength(points) {
     let smallest = +Infinity;
-    for(let i = 0; i < points.length - 1; i++) {
-        const pointsDistance = getPointsDistance(points[i], points[i + 1]);
-        if(pointsDistance < smallest) {
-            smallest = pointsDistance;
+    for(let i = 0; i < points.length; i++) {
+        for(let j = i + 1; j < points.length; j++) {
+            const pointsDistance = getPointsDistance(points[i], points[j]);
+            if(pointsDistance < smallest) {
+                smallest = pointsDistance;
+            }
         }
     }
     return smallest.toFixed(2);
