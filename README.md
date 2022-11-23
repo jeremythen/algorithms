@@ -37,7 +37,23 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
     - [31 Can Construct Palindrome](#31-can-construct-palindrome)
     - [32 Implement a basic solution for the Merkle Tree/Root/Proof](#32-implement-a-basic-solution-for-the-merkle-treerootproof)
     - [Shortest Euclidian Distance](#shortest-euclidian-distance)
-    - [[Numbers] Min Cost of Adjacent Tower Height modification](#numbers-min-cost-of-adjacent-tower-height-modification)
+    - [\[Numbers\] Min Cost of Adjacent Tower Height modification](#numbers-min-cost-of-adjacent-tower-height-modification)
+    - [\[Numbers\] Bitwise operations](#numbers-bitwise-operations)
+      - [Types of bitwise operations](#types-of-bitwise-operations)
+      - [Common operations with bitwise operators](#common-operations-with-bitwise-operators)
+      - [Simple exercises to practice with the operators](#simple-exercises-to-practice-with-the-operators)
+        - [Write an algorithm to get the bit at ith position.](#write-an-algorithm-to-get-the-bit-at-ith-position)
+        - [Write an algorithm to toggle a bit at ith position.](#write-an-algorithm-to-toggle-a-bit-at-ith-position)
+        - [Check if a bit is on](#check-if-a-bit-is-on)
+        - [Merge 2 binary numbers](#merge-2-binary-numbers)
+        - [Turn on a specific bit](#turn-on-a-specific-bit)
+        - [Bit size](#bit-size)
+        - [Count on bits](#count-on-bits)
+        - [Is even or odd](#is-even-or-odd)
+        - [Multiply by 2](#multiply-by-2)
+        - [Divide by 2](#divide-by-2)
+        - [Convert to Little Endian (LE)](#convert-to-little-endian-le)
+        - [Convert to Big Endian (BE)](#convert-to-big-endian-be)
     - [nth Sorting](#nth-sorting)
 
 ## List of algorithms to implement:
@@ -423,6 +439,184 @@ function minCost(H, M)
 
 And should return the minimum cost it would need to modify the towers height so that no towers with the same height are adjacent.
 
+### [Numbers] Bitwise operations
+
+#### Types of bitwise operations
+
+1) Logical operators
+   1) `&` (AND operator. Set the bit on if both bits are on.)
+   2) `|` (OR operator. Set the bit on if at least one of the bit is on.)
+   3) `^` (XOR operator. Set the bit on if both bits are different.)
+   4) `~` (NOT or Complement operator. Negates the bit. If it's on, sets it off, if it's off, sets it on.)
+2) Shift operators
+   1) `<<` (signed left shift.)
+   2) `>>` (signed right shift. Keeps the sign bit as is, filling with 1s if the sign bit is on, 0 otherwise.)
+   3) `>>>` (unsigned right shift. Doesn't keep the sign bit. Shifts all the bits to the right, filling with zeros on the left.)
+
+#### Common operations with bitwise operators
+
+1) Copy certain bit or bits
+   1) Can be done with the & (AND) operator.
+   2) Shift operators can be used to access any range of the binary number to copy certain range.
+2) Check if a bit is on or off
+   1) Done with a similar approach as described above, with the & and shift operators.
+   2) Can be used to check if the sign bit is on or off.
+3) Merge 2 binary numbers (this is not a sum)
+   1) Can be done with the | (OR) operator.
+   2) Useful for Bloom Filters.
+4) Turn on a specific bit
+   1) Can be done with the | operator.
+5) Toggle a bit (set it off if it's on, set it on if it's off)
+   1) Can be done with a combination of shift and ^ (XOR) operators.
+6) Counting bits
+   1) Can be done with a combination of a for loop with shift and & operators.
+   2) Can be done with the logarithm base 2 of the binary number (Math.log2(n)) to know how big in terms of bits is the number (an 8-bit number? 32-bit number?). Not to know how many on or off bit a number has.
+7) ) Check if a number is even or odd
+   1) This can be done with the & operator
+8) Divide and multiply by 2
+   1) This can be done with the right and left shift operators
+9) Swap variables
+   1)  Can be done with the ^ operator
+10) Check if a number is a power of two
+
+We can represent boolean values in a compact way with binary numbers. If we use a 64 bit number, we could save 64 different boolean values in a single number, and access them by 'index' with shifting and & operators.
+This is useful to save memory. Because instead of using 64 different boolean variables, or an array with 64 boolean values, a 64-bit number could be enough. And with bitwise operations, usually the time and space complexity stays constant.
+
+#### Simple exercises to practice with the operators
+
+##### Write an algorithm to get the bit at ith position.
+
+Function signature: `getBitAt(number, bitIndex): number`.
+
+Hint: Use shift and & operators.
+
+Given `number` (in binary): `10011101`
+Given `bitIndex`: 2
+Return 1
+
+The bit indices are counted from right to left. So the first bit is 1 (at index 0), the second is 0 (at index 1, etc.), the third is 1, the fourth is 1, the 5th is 1, the 6th is 0, the 7th is 0, the 8th is 1.
+
+So, if `bitIndex` is 0, the function should return 1, because 1 is the first bit.
+If `bitIndex` is 5, return 0, because the 6th bit is 0 (at index 5).
+
+
+##### Write an algorithm to toggle a bit at ith position.
+
+Function signature: `toggleBitAt(number, bitIndex): number`.
+
+Given `number` (in binary): `10011101`
+Given `bitIndex`: 1
+Return `10011111`, because the bit at index 1 is 0 (the second bit, from left to right).
+
+Given `number` (in binary): `10011101`
+Given `bitIndex`: 3
+Return `10010111`, because the bit at index 3 is 1 (the 4th bit, from left to right).
+
+##### Check if a bit is on
+
+Function signature: `isBitOnAtIndex(number, bitIndex): bool`.
+
+Given `number` (in binary): `10011101`
+Given `bitIndex`: 2
+Return: `true`, because the third bit (the bit at index 2) is on.
+
+Given `number` (in binary): `10011101`
+Given `bitIndex`: 1
+Return: `false`, because the second bit (the bit at index 1) is off.
+
+##### Merge 2 binary numbers
+
+Function signature: `mergeNumbers(number1, number2): number`.
+
+Given `number1` (in binary): `10011101`
+And `number2` (in binary): `11000110`
+Return: `11011111`
+
+##### Turn on a specific bit
+
+Function signature: `turnOnBitAtIndex(number, bitIndex): number`.
+
+Given `number` (in binary): `10011101`
+Given `bitIndex`: 1
+Return `10011111`, because the bit at index 1 (second bit) is 0, so it should be set to 1.
+
+Given `number` (in binary): `10011101`
+Given `bitIndex`: 2
+Return `10011101`, because the bit at index 2 (third bit) is 1, so it should stay the same.
+
+##### Bit size
+
+Function signature: `getNumberBitSize(number): number`.
+
+Consider the number to be certain bit size depending on the amount of bits that it has, using a power of 2 approach. Meaning: 
+
+1) If the number has only 1 bit, then is a 1-bit number.
+2) If the number has only 2 bits, then is a 2-bit number.
+3) If the number has between 3 to 4 bits, then is a 4-bit number.
+4) If the number has between 5 to 8 bits, then is a 8-bit number.
+5) If the number has between 9 to 16 bits, then is a 16-bit number.
+6) If the number has between 17 to 32 bits, then is a 32-bit number.
+7) If the number has between 33 to 64 bits, then is a 64-bit number.
+8) And so on, until 256 bits.
+
+Given `number` (in binary): `10011101`
+Return `8`, because this is an 8-bit number.
+
+Given `number` (in binary): `101` (it could be thought as `0101`, complementing the power of two with zeros)
+Return `4`, because this is an 4-bit number (remember increasing the size by a power of two).
+
+Given `number` (in binary): `110011101` (Notice it has 9 bits. It could be thought as `0000000110011101`, complementing the power of two with zeros. In this case, 16 bits)
+Return `16`, because this is an 16-bit number (remember increasing the size by a power of two).
+
+##### Count on bits
+
+Function signature: `countOnBits(number): number`.
+
+Given `number` (in binary): `10011101`
+Return `5`, because only 5 bits are on.
+
+##### Is even or odd
+
+Function signature: `isEven(number): bool`.
+
+Given `number` (in binary): `10011101`
+Return `true`, this is an odd number (the first bit, the bit at index 0, is on, which makes it odd)
+
+Given `number` (in binary): `10011100`
+Return `false`, this is an even number (the first bit, the bit at index 0, is off, which makes it even)
+
+
+##### Multiply by 2
+
+Multiply by 2 using the left shift (`<<`) operator.
+
+Function signature: `multiplyBy2(number): number`.
+
+Given `number` (in binary): `10011101`
+Return `100111010`
+
+##### Divide by 2
+
+Divide by 2 using the right shift (`>>`) operator.
+
+Function signature: `divideBy2(number): number`.
+
+Given `number` (in binary): `10011101`
+Return `1001110`
+
+##### Convert to Little Endian (LE)
+
+Function signature: `convertToLE(number): number`.
+
+Given `number` (in binary): `1010111110011101`
+Return `1001110110101111`
+
+##### Convert to Big Endian (BE)
+
+Function signature: `convertToLE(number): number`.
+
+Given `number` (in binary): `1001110110101111`
+Return `1010111110011101`
 
 ### nth Sorting
 
