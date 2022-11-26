@@ -42,18 +42,23 @@ Repository to hold algorithms descriptions and solutions in multiple programing 
       - [Types of bitwise operations](#types-of-bitwise-operations)
       - [Common operations with bitwise operators](#common-operations-with-bitwise-operators)
       - [Simple exercises to practice with the operators](#simple-exercises-to-practice-with-the-operators)
-        - [Write an algorithm to get the bit at ith position.](#write-an-algorithm-to-get-the-bit-at-ith-position)
-        - [Write an algorithm to toggle a bit at ith position.](#write-an-algorithm-to-toggle-a-bit-at-ith-position)
-        - [Check if a bit is on](#check-if-a-bit-is-on)
-        - [Merge 2 binary numbers](#merge-2-binary-numbers)
-        - [Turn on a specific bit](#turn-on-a-specific-bit)
-        - [Bit size](#bit-size)
-        - [Count on bits](#count-on-bits)
-        - [Is even or odd](#is-even-or-odd)
-        - [Multiply by 2](#multiply-by-2)
-        - [Divide by 2](#divide-by-2)
-        - [Convert to Little Endian (LE)](#convert-to-little-endian-le)
+        - [1 Write an algorithm to get the bit at ith position.](#1-write-an-algorithm-to-get-the-bit-at-ith-position)
+        - [2 Write an algorithm to get a range of the first 8 bits (1 byte) of a number, with masking in hexadecimal](#2-write-an-algorithm-to-get-a-range-of-the-first-8-bits-1-byte-of-a-number-with-masking-in-hexadecimal)
+        - [3 Write an algorithm to reset (turn off) the first byte (8 bits) of a number](#3-write-an-algorithm-to-reset-turn-off-the-first-byte-8-bits-of-a-number)
+        - [4 Write an algorithm to toggle a bit at ith position.](#4-write-an-algorithm-to-toggle-a-bit-at-ith-position)
+        - [5 Check if a bit is on](#5-check-if-a-bit-is-on)
+        - [6 Merge 2 binary numbers](#6-merge-2-binary-numbers)
+        - [7 Turn on a specific bit](#7-turn-on-a-specific-bit)
+        - [8 Bit size](#8-bit-size)
+        - [9 Count on bits](#9-count-on-bits)
+        - [10 Is even or odd](#10-is-even-or-odd)
+        - [11 Multiply by 2](#11-multiply-by-2)
+        - [12 Divide by 2](#12-divide-by-2)
+        - [13 Check if a number is power of two](#13-check-if-a-number-is-power-of-two)
+        - [14 Swap variables](#14-swap-variables)
+        - [15 Convert to Little Endian (LE)](#15-convert-to-little-endian-le)
         - [Convert to Big Endian (BE)](#convert-to-big-endian-be)
+        - [16 Implement bit field](#16-implement-bit-field)
     - [nth Sorting](#nth-sorting)
 
 ## List of algorithms to implement:
@@ -455,36 +460,43 @@ And should return the minimum cost it would need to modify the towers height so 
 
 #### Common operations with bitwise operators
 
-1) Copy certain bit or bits
-   1) Can be done with the & (AND) operator.
-   2) Shift operators can be used to access any range of the binary number to copy certain range.
-2) Check if a bit is on or off
+1) Copy/read certain bit or bits with masking
+   1) Masking is a range of bits hardcoded to do some operations with other dynamic numbers.
+      1) We could create our masking with decimal, hexadecimal or binary numbers, but it's usually done with hexadecimal numbers.
+      2) A mask looks like this: `0XFF`. In this case, 8 bits are on, so we can access a byte (8 bits) with this mask at a time.
+   2) Can be done with the & (AND) operator.
+   3) Shift operators can be used to access any range of the binary number to copy certain range.
+2) Remove/reset a range of bits with masking
+   1) Can be done with masking and the ^ operator
+3) Check if a bit is on or off
    1) Done with a similar approach as described above, with the & and shift operators.
    2) Can be used to check if the sign bit is on or off.
-3) Merge 2 binary numbers (this is not a sum)
+4) Merge 2 binary numbers (this is not a sum)
    1) Can be done with the | (OR) operator.
    2) Useful for Bloom Filters.
-4) Turn on a specific bit
+5) Turn on a specific bit
    1) Can be done with the | operator.
-5) Toggle a bit (set it off if it's on, set it on if it's off)
+6) Toggle a bit (set it off if it's on, set it on if it's off)
    1) Can be done with a combination of shift and ^ (XOR) operators.
-6) Counting bits
+7) Counting bits
    1) Can be done with a combination of a for loop with shift and & operators.
    2) Can be done with the logarithm base 2 of the binary number (Math.log2(n)) to know how big in terms of bits is the number (an 8-bit number? 32-bit number?). Not to know how many on or off bit a number has.
-7) ) Check if a number is even or odd
+8) ) Check if a number is even or odd
    1) This can be done with the & operator
-8) Divide and multiply by 2
+9)  Divide and multiply by 2
    1) This can be done with the right and left shift operators
-9) Swap variables
-   1)  Can be done with the ^ operator
 10) Check if a number is a power of two
+    1) This can be done by understanding how power of 2 numbers are represented in binary and then using the & operator with some trick.
+11)  Swap variables
+   1)  Can be done with the ^ operator
+
 
 We can represent boolean values in a compact way with binary numbers. If we use a 64 bit number, we could save 64 different boolean values in a single number, and access them by 'index' with shifting and & operators.
 This is useful to save memory. Because instead of using 64 different boolean variables, or an array with 64 boolean values, a 64-bit number could be enough. And with bitwise operations, usually the time and space complexity stays constant.
 
 #### Simple exercises to practice with the operators
 
-##### Write an algorithm to get the bit at ith position.
+##### 1 Write an algorithm to get the bit at ith position.
 
 Function signature: `getBitAt(number, bitIndex): number`.
 
@@ -499,8 +511,22 @@ The bit indices are counted from right to left. So the first bit is 1 (at index 
 So, if `bitIndex` is 0, the function should return 1, because 1 is the first bit.
 If `bitIndex` is 5, return 0, because the 6th bit is 0 (at index 5).
 
+##### 2 Write an algorithm to get a range of the first 8 bits (1 byte) of a number, with masking in hexadecimal
 
-##### Write an algorithm to toggle a bit at ith position.
+Function signature: `getFirstByte(number): number`.
+
+Given `number` (in binary): `1000001010111101`
+Return: `10111101`
+
+##### 3 Write an algorithm to reset (turn off) the first byte (8 bits) of a number
+
+Function signature: `resetFirst8Bits(number): number`.
+
+Given `number` (in binary): `1000001010111101`
+Return: `1000001000000000`
+
+
+##### 4 Write an algorithm to toggle a bit at ith position.
 
 Function signature: `toggleBitAt(number, bitIndex): number`.
 
@@ -512,7 +538,7 @@ Given `number` (in binary): `10011101`
 Given `bitIndex`: 3
 Return `10010111`, because the bit at index 3 is 1 (the 4th bit, from left to right).
 
-##### Check if a bit is on
+##### 5 Check if a bit is on
 
 Function signature: `isBitOnAtIndex(number, bitIndex): bool`.
 
@@ -524,7 +550,7 @@ Given `number` (in binary): `10011101`
 Given `bitIndex`: 1
 Return: `false`, because the second bit (the bit at index 1) is off.
 
-##### Merge 2 binary numbers
+##### 6 Merge 2 binary numbers
 
 Function signature: `mergeNumbers(number1, number2): number`.
 
@@ -532,7 +558,7 @@ Given `number1` (in binary): `10011101`
 And `number2` (in binary): `11000110`
 Return: `11011111`
 
-##### Turn on a specific bit
+##### 7 Turn on a specific bit
 
 Function signature: `turnOnBitAtIndex(number, bitIndex): number`.
 
@@ -544,7 +570,7 @@ Given `number` (in binary): `10011101`
 Given `bitIndex`: 2
 Return `10011101`, because the bit at index 2 (third bit) is 1, so it should stay the same.
 
-##### Bit size
+##### 8 Bit size
 
 Function signature: `getNumberBitSize(number): number`.
 
@@ -568,14 +594,14 @@ Return `4`, because this is an 4-bit number (remember increasing the size by a p
 Given `number` (in binary): `110011101` (Notice it has 9 bits. It could be thought as `0000000110011101`, complementing the power of two with zeros. In this case, 16 bits)
 Return `16`, because this is an 16-bit number (remember increasing the size by a power of two).
 
-##### Count on bits
+##### 9 Count on bits
 
 Function signature: `countOnBits(number): number`.
 
 Given `number` (in binary): `10011101`
 Return `5`, because only 5 bits are on.
 
-##### Is even or odd
+##### 10 Is even or odd
 
 Function signature: `isEven(number): bool`.
 
@@ -586,7 +612,7 @@ Given `number` (in binary): `10011100`
 Return `false`, this is an even number (the first bit, the bit at index 0, is off, which makes it even)
 
 
-##### Multiply by 2
+##### 11 Multiply by 2
 
 Multiply by 2 using the left shift (`<<`) operator.
 
@@ -595,7 +621,7 @@ Function signature: `multiplyBy2(number): number`.
 Given `number` (in binary): `10011101`
 Return `100111010`
 
-##### Divide by 2
+##### 12 Divide by 2
 
 Divide by 2 using the right shift (`>>`) operator.
 
@@ -604,7 +630,36 @@ Function signature: `divideBy2(number): number`.
 Given `number` (in binary): `10011101`
 Return `1001110`
 
-##### Convert to Little Endian (LE)
+##### 13 Check if a number is power of two
+
+Power of two numbers are represented in binary with only 1 bit on in any place (except the sign bit).
+
+A power of two number represented in binary looks like this: `10000`. This is `16` in decimal. `10000000`, this is `128` in decimal. And so on.
+
+Function signature: `isPowerOfTwo(number): bool`.
+
+Given: `10000`
+Return: true
+
+Given: `10001`
+Return: false
+
+Given: `11000`
+Return: false
+
+Given: `10000000`
+Return: true
+
+##### 14 Swap variables
+
+Swap the value of 2 integer variables without using a third variable
+
+Write a piece of code that does the swapping. I can be outside of a function.
+
+Given: `a = 1100101; b = 1010000;`
+Print: `a = 1010000; b = 1100101;`
+
+##### 15 Convert to Little Endian (LE)
 
 Function signature: `convertToLE(number): number`.
 
@@ -617,6 +672,14 @@ Function signature: `convertToLE(number): number`.
 
 Given `number` (in binary): `1001110110101111`
 Return `1010111110011101`
+
+##### 16 Implement bit field
+
+A bit field is a data structure that uses bits to represent boolean values for certain uses. It's really efficient in terms of time and space complexity, because we can use a single number to represent baby boolean values, and read and write each value in constant time.
+
+Let's implement one to use as a checklist. Where each bit index represents the id of an item and the value (1 or 0) represents that it is processed or not.
+
+
 
 ### nth Sorting
 
