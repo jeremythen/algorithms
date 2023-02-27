@@ -4,11 +4,10 @@ pragma solidity ^0.8.17;
 
 contract Bitwise {
     // 1
-    function getBitAtIndex(uint32 number, uint8 bitIndex)
-        public
-        pure
-        returns (uint8)
-    {
+    function getBitAtIndex(
+        uint32 number,
+        uint8 bitIndex
+    ) public pure returns (uint8) {
         uint32 bIndex = uint32(1) << bitIndex;
         return uint8((number & bIndex) >> bitIndex);
     }
@@ -26,40 +25,36 @@ contract Bitwise {
     }
 
     // 4
-    function toggleBitAt(uint32 number, uint8 bitIndex)
-        public
-        pure
-        returns (uint32)
-    {
+    function toggleBitAt(
+        uint32 number,
+        uint8 bitIndex
+    ) public pure returns (uint32) {
         uint32 bIndex = uint32(1) << bitIndex;
         return number ^ bIndex;
     }
 
     // 5
-    function isBitOnAtIndex(uint32 number, uint8 bitIndex)
-        public
-        pure
-        returns (bool)
-    {
+    function isBitOnAtIndex(
+        uint32 number,
+        uint8 bitIndex
+    ) public pure returns (bool) {
         uint32 bIndex = uint32(1) << bitIndex;
         return (number & bIndex) > 0;
     }
 
     // 6
-    function mergeNumbers(uint32 number1, uint32 number2)
-        public
-        pure
-        returns (uint32)
-    {
+    function mergeNumbers(
+        uint32 number1,
+        uint32 number2
+    ) public pure returns (uint32) {
         return number1 | number2;
     }
 
     // 7
-    function turnOnBitAtIndex(uint32 number, uint8 bitIndex)
-        public
-        pure
-        returns (uint32)
-    {
+    function turnOnBitAtIndex(
+        uint32 number,
+        uint8 bitIndex
+    ) public pure returns (uint32) {
         uint32 bIndex = uint32(1) << bitIndex;
         uint32 nagated = ~bIndex;
         return number & nagated;
@@ -115,11 +110,10 @@ contract Bitwise {
     }
 
     // 14
-    function swapVariables(uint32 _number1, uint32 _number2)
-        public
-        pure
-        returns (uint32 number1, uint32 number2)
-    {
+    function swapVariables(
+        uint32 _number1,
+        uint32 _number2
+    ) public pure returns (uint32 number1, uint32 number2) {
         _number1 = _number1 ^ _number2;
         _number2 = _number1 ^ _number2;
         _number1 = _number1 ^ _number2;
@@ -130,11 +124,9 @@ contract Bitwise {
     // 15
     // If you know that 'number' is in Little Endian, then you'll get the result in Big Endian
     // If you know that 'number' is in Big Endian, then you'll get the result in Little Endian
-    function toggleLittleToBigEndian(uint32 number)
-        public
-        pure
-        returns (uint32)
-    {
+    function toggleLittleToBigEndian(
+        uint32 number
+    ) public pure returns (uint32) {
         uint32 oneByteMask = 0xFF;
 
         // & operator, shifting, masking, | operator to merge results.

@@ -467,10 +467,9 @@ And should return the minimum cost it would need to modify the towers height so 
    2) Can be done with the & (AND) operator.
    3) Shift operators can be used to access any range of the binary number to copy certain range.
 2) Remove/reset a range of bits with masking
-   1) Can be done with masking and the ^ operator
+   1) Can be done with masking and the & operator
 3) Check if a bit is on or off
    1) Done with a similar approach as described above, with the & and shift operators.
-   2) Can be used to check if the sign bit is on or off.
 4) Merge 2 binary numbers (this is not a sum)
    1) Can be done with the | (OR) operator.
    2) Useful for Bloom Filters.
