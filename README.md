@@ -678,6 +678,54 @@ A bit field is a data structure that uses bits to represent boolean values for c
 
 Let's implement one to use as a checklist. Where each bit index represents the id of an item and the value (1 or 0) represents that it is processed or not.
 
+##### 17 Median of sorted arrays
+
+The median is the element in the middle of the array, like [1,2,3,4,5], the median is 3 because it is in the middle. This only applies with the array length is odd.
+If the array length is even, then the median is the sum of the 2 middle elements devided b 2, like [1,2,3,4,5,6], the median is `3.5`, because `3 + 4` is `7`, devided by `2`` is `3.5`.
+
+The function will receive 2 arrays, like `[1,2,3], [4,5]`, if they where merged, they would look like `1,2,3,4,5`, and the median would be `3`.
+
+The recommended and expected solution should be `O(1)`.
+
+* Positive numbers
+
+Create a function `findMedianSortedArraysAllPositive` that receives 2 sorted arrays and return the median of the arrays if the arrays would be merged.
+
+Check some examples of inputs and outputs:
+
+```js
+console.log(findMedianSortedArraysAllPositive([1,3], [2]) === 2);
+console.log(findMedianSortedArraysAllPositive([1,2], [3,4]) === 2.5);
+console.log(findMedianSortedArraysAllPositive([0,0], [0,0]) === 0);
+console.log(findMedianSortedArraysAllPositive([1,2,3,4,5,6], [7,8,9,10,11,12]) === 6.5);
+console.log(findMedianSortedArraysAllPositive([1,2,3,4,5,6], [7,8,9,10,11]) === 6);
+console.log(findMedianSortedArraysAllPositive([1,2,3,4,5,6], [7,8,9,10]) === 5.5);
+console.log(findMedianSortedArraysAllPositive([1,2,3,4,5,6], [7,8,9]) === 5);
+console.log(findMedianSortedArraysAllPositive([1,2,3,4,5,6], [7,8]) === 4.5);
+console.log(findMedianSortedArraysAllPositive([1,2,3,4,5,6], [7]) === 4);
+```
+
+* Negative numbers
+
+Create a function `findMedianSortedArraysAllNegativeAllNegative` that receives 2 sorted arrays and return the median of the arrays if the arrays would be merged.
+
+Check some examples of inputs and outputs:
+
+```js
+console.log(findMedianSortedArraysAllNegative([ -12, -11, -10, -9, -8, -7 ], [ -6, -5, -4, -3, -2, -1 ]) === -6.5);
+console.log(findMedianSortedArraysAllNegative([ -12, -11, -10, -9, -8 ], [ -6, -5, -4, -3, -2, -1 ]) === -6);
+console.log(findMedianSortedArraysAllNegative([ -12, -11, -10, -9 ], [ -6, -5, -4, -3, -2, -1 ]) === -4.5);
+console.log(findMedianSortedArraysAllNegative([ -12, -11, -10 ], [ -6, -5, -4, -3, -2, -1 ]) === -5);
+console.log(findMedianSortedArraysAllNegative([ -12, -11 ], [ -6, -5, -4, -3, -2, -1 ]) === -3.5);
+console.log(findMedianSortedArraysAllNegative([ -12 ], [ -6, -5, -4, -3, -2, -1 ]) === -4);
+```
+
+* Constrains
+
+1) The arrays will not be empty, they will both have at least 1 element.
+2) The arrays will not have duplicate values.
+3) The arrays will not have the number `0`.
+4) The arrays could be of any size, they don't need to be the same size. The first array could be bigger or smaller than the second array.
 
 
 ### nth Sorting
